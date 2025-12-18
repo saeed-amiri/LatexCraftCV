@@ -52,3 +52,17 @@
     \par
   }
 \ExplSyntaxOff
+
+
+% The header enviroment
+%Format: \newenvironment{name}{begdef}{enddef}
+\newenvironment{photoHead}[1][BLOCK]
+{
+  \par\noindent
+  \textbf{#1}\par
+  \hrule\par
+  \vspace{0.3em}
+}
+{
+  \par
+}
