@@ -64,7 +64,7 @@
 % Header of the cv!
 \ExplSyntaxOn
 %\header[\author][title][author_color][rest_color][git][linkdin]{address}{email}{phone}
-\NewDocumentCommand{\header}{O{Author} O{Email} O{Profession} O{Email} O{Adress} O{Git} O{LinkdIn} O{Phone}}
+\NewDocumentCommand{\cvheader}{O{Author} O{Email} O{Profession} O{Email} O{Adress} O{Git} O{LinkdIn} O{Phone} O{Photo}}
   {
    \par\noindent
    \group_begin:
@@ -77,6 +77,7 @@
     \tl_if_blank:nF { #6 } { \color{black}Git:~#6\par }
     \tl_if_blank:nF { #7 } { \color{black}LinkdIn:~#7\par }
     \tl_if_blank:nF { #8 } { \color{black}Phone:~#8\par }
+    \tl_if_blank:nF { #9 } { \color{black}Photo:~#9\par }
    \group_end:
    \par
   }
