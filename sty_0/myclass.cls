@@ -19,7 +19,15 @@
 
 \RequirePackage{xcolor}
 \RequirePackage{xparse}
-
+\RequirePackage{graphicx}
+\RequirePackage{xstring}
+\RequirePackage[
+  left=1cm,
+  right=1cm,
+  top=1cm,
+  bottom=1cm
+]{geometry}
+\RequirePackage{fancyhdr}
 % Define how title is printed
 %Format: \renewcommand{cmd}{def}
 \makeatletter
@@ -64,7 +72,7 @@
 % Header of the cv!
 \ExplSyntaxOn
 %\header[\author][title][author_color][rest_color][git][linkdin]{address}{email}{phone}
-\NewDocumentCommand{\cvheader}{O{Author} O{Email} O{Profession} O{Email} O{Adress} O{Git} O{LinkdIn} O{Phone} O{Photo}}
+\NewDocumentCommand{\cvheader}{O{Author} O{Email} O{Profession} O{Email} O{Adress} O{Git} O{LinkdIn} O{Phone.png} O{Photo}}
   {
    \par\noindent
    \group_begin:
@@ -83,6 +91,68 @@
   }
 \ExplSyntaxOff
 
+\makeatletter
+
+% Define dimensions
+\newlength{\cvheaderheight}
+\setlength{\cvheaderheight}{4cm}
+\newlength{\cvphotowidth}
+\setlength{\cvphotowidth}{7cm}
+\newlength{\cvsep}
+\setlength{\cvsep}{1em}
+
+\ExplSyntaxOn
+\keys_define:nn { cv/header }
+ {
+  author     .tl_set:N = \l_cv_author_tl,
+  author     .initial:n = Author,
+
+  email      .tl_set:N = \l_cv_email_tl,
+  email      .initial:n = Email,
+
+  profession .tl_set:N = \l_cv_profession_tl,
+  profession .initial:n = Profession,
+
+  address    .tl_set:N = \l_cv_address_tl,
+  address    .initial:n = Address,
+
+  github     .tl_set:N = \l_cv_github_tl,
+  github     .initial:n = Git,
+
+  linkedin   .tl_set:N = \l_cv_linkedin_tl,
+  linkedin   .initial:n = LinkedIn,
+
+  phone      .tl_set:N = \l_cv_phone_tl,
+  phone      .initial:n = Phone,
+
+  photo      .tl_set:N = \l_cv_photo_tl,
+  photo      .initial:n = photo.png,
+ }
+
+
+\NewDocumentCommand{\cvheaders}{ m }
+ {
+  \keys_set:nn { cv/header } { #1 }
+  \noindent
+  \begin{minipage}[c]{0.3\textwidth}
+    \begin{flushleft}
+      \includegraphics[width=1\textwidth,height=1\textwidth,keepaspectratio]{\l_cv_photo_tl}
+    \end{flushleft}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.7\textwidth}
+    \centering
+      {\Large{\l_cv_author_tl}}\par
+      \l_cv_email_tl\par
+      \l_cv_profession_tl\par
+      \l_cv_address_tl\par
+      \l_cv_github_tl\par
+      \l_cv_linkedin_tl\par
+      \l_cv_phone_tl\par
+  \end{minipage}
+  \vspace{1em}
+  }
+\ExplSyntaxOff
 
 
 % The header enviroment
