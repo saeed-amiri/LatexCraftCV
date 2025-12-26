@@ -1,7 +1,7 @@
 *.png
 *.jpeg
 *.jpg
-
+_*
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

@@ -1,0 +1,67 @@
+
+\RequirePackage[default,semibold]{sourcesanspro}
+\RequirePackage[11pt]{moresize}
+\RequirePackage{anyfontsize}
+\RequirePackage{csquotes}
+
+\RequirePackage{graphicx}
+\RequirePackage[twoside]{fancyhdr}
+
+% COLOR
+\RequirePackage{xcolor}
+\definecolor{name}{RGB}{2, 25, 54}
+\definecolor{highlight}{RGB}{45, 53, 64}
+\definecolor{myblack}{RGB}{56, 64, 74}
+
+% LINKS
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=highlight}
+
+% BULLET POINTS
+\RequirePackage[inline]{enumitem}
+\setlength{\tabcolsep}{0in}
+
+% Define your default (main) style for all pages (except first)
+\fancyhf{}
+\setlength{\headheight}{10pt}
+
+% RENEWCOMMAND
+\renewcommand{\headrulewidth}{0pt}
+
+% Define a custom style for the first page
+\fancypagestyle{firstpage}
+{
+  \fancyhead{}
+  \setlength{\headheight}{190pt}
+  \renewcommand{\headrulewidth}{1.2pt}
+  \renewcommand{\headrule}{%
+    {\color{highlight}\hrule height \headrulewidth width \headwidth}%
+  }
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyhead[L]{\sffamily\fancyhdrbox{%
+    \includegraphics[width=0.32\textwidth]{\photo}}}
+  \fancyhead[R]
+    {
+      \fancyhdrbox[][11.5cm]{%
+      \begin{minipage}[c][\headheight][c]{10cm}
+        \centering
+        {\color{name}\Huge\textbf\name\\}
+        {\color{name}\prefix\\}
+        \vspace{6pt}
+        {\color{highlight}
+          {\sffamily\Large\role}\\
+          \vspace{8pt}
+          \location\\
+	        \vspace{0.1cm}
+          \href{mailto:\email}{\email} \\
+	        \vspace{0.1cm}
+          \href{https://github.com/\github}{github.com/\github}\\
+	        \vspace{0.1cm}
+	        \LinkedIn\\
+	        \vspace{0.1cm}
+          \phone \\    
+	        \vspace{0.1cm}
+        }
+      \end{minipage}}%
+    }
+}
