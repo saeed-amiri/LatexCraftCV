@@ -90,3 +90,33 @@
 \newenvironment{zitemize}{
 \begin{itemize} \itemsep 0pt \parskip 0pt \parsep 1pt}
 {\end{itemize}\vspace{-.5em}}
+
+% Define a vertical line that stays in the background
+\RequirePackage{tikz}
+\usetikzlibrary{calc,tikzmark}
+\newsavebox{\tlbox}
+\newlength{\tlht}
+
+% \begin{timelineentry}[<line width>]{<x offset>}{<name>}
+%   ...content...
+% \end{timelineentry}
+%
+% <x offset> = how far LEFT of the content block the line is (e.g. 1.2em)
+% <name>     = unique id (e.g. train, postdoc1, phd2)
+\newenvironment{timelineentry}[3][2.5pt]{%
+  \def\tllw{#1}%
+  \def\tlx{#2}%
+  \def\tlid{#3}%
+  \begin{lrbox}{\tlbox}%
+  \begin{minipage}{\linewidth}%
+  \tikzmark{\tlid-top}%
+}{%
+  \tikzmark{\tlid-bot}%
+  \end{minipage}%
+  \end{lrbox}%
+  \noindent\usebox{\tlbox}%
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[sectioncolor,line width=\tllw]
+      ($(pic cs:\tlid-top)+(-\tlx,0)$) -- ($(pic cs:\tlid-bot)+(-\tlx,0)$);
+  \end{tikzpicture}%
+}
