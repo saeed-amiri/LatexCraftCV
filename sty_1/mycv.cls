@@ -4,10 +4,9 @@
 
 \RequirePackage[
   top=0.2cm,
-  bottom=1cm,
+  bottom=2cm,
   right=1.3cm,
   left=1.3cm,
-  headheight=110pt,
   includehead,includefoot,
   heightrounded
 ]{geometry}

@@ -9,9 +9,11 @@
 
 % COLOR
 \RequirePackage{xcolor}
-\definecolor{name}{RGB}{2, 25, 54}
+\definecolor{namecolor}{RGB}{2, 25, 54}
 \definecolor{highlight}{RGB}{45, 53, 64}
 \definecolor{myblack}{RGB}{56, 64, 74}
+\definecolor{sectioncolor}{RGB}{133, 25, 11}
+\definecolor{subtextcolor}{RGB}{14, 2, 87}
 
 % LINKS
 \RequirePackage{hyperref}
@@ -20,17 +22,20 @@
 % BULLET POINTS
 \RequirePackage[inline]{enumitem}
 \setlength{\tabcolsep}{0in}
-
 % Define your default (main) style for all pages (except first)
 \fancyhf{}
+\fancyfoot{}
+\renewcommand{\thepage}{} 
 \setlength{\headheight}{10pt}
+\renewcommand{\thefootnote}{\textcolor{white}{\arabic{footnote}}}
 
 % RENEWCOMMAND
-\renewcommand{\headrulewidth}{0pt}
-
 % Define a custom style for the first page
 \fancypagestyle{firstpage}
 {
+  \fancyhf{}
+  \fancyfoot{}
+  \renewcommand{\thepage}{} 
   \fancyhead{}
   \setlength{\headheight}{190pt}
   \renewcommand{\headrulewidth}{1.2pt}
@@ -45,8 +50,8 @@
       \fancyhdrbox[][11.5cm]{%
       \begin{minipage}[c][\headheight][c]{10cm}
         \centering
-        {\color{name}\Huge\textbf\name\\}
-        {\color{name}\prefix\\}
+        {\color{namecolor}\Huge\textbf\name\\}
+        {\color{namecolor}\prefix\\}
         \vspace{6pt}
         {\color{highlight}
           {\sffamily\Large\role}\\
@@ -59,9 +64,29 @@
 	        \vspace{0.1cm}
 	        \LinkedIn\\
 	        \vspace{0.1cm}
-          \phone \\    
-	        \vspace{0.1cm}
+          \phone
         }
       \end{minipage}}%
     }
 }
+
+% BOLD COMMAND
+\newcommand{\skills}[1]{ {\bfseries #1}}
+
+% SUBTEXT
+\newcommand{\subtext}[1]{{\color{subtextcolor}\textit{#1}}\par\vspace{-.75em}}
+
+% SECTION FORMATTING 
+\RequirePackage[nostruts]{titlesec}
+\titlespacing*{\section}{0em}{0.5em}{0em}
+\titleformat{\section}{\color{sectioncolor} \scshape \raggedright \large}{}{0em}{}[\vspace{-0.75em}\hrulefill]
+
+% SUBSECTION FORMATTING
+\titlespacing*{\subsection}{0em}{0em}{0em}
+\titleformat{\subsection}{\color{subtextcolor}\bfseries}{}{0em}{}[]
+
+% tighter spacing than itemize
+\setlist[itemize]{align=parleft,left=0pt..1em}
+\newenvironment{zitemize}{
+\begin{itemize} \itemsep 0pt \parskip 0pt \parsep 1pt}
+{\end{itemize}\vspace{-.5em}}
