@@ -3,7 +3,7 @@
 \LoadClass[10pt,a4paper]{article}
 
 \RequirePackage[
-  top=0.2cm,
+  top=0.5cm,
   bottom=2cm,
   right=1.3cm,
   left=1.3cm,

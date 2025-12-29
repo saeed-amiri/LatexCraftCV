@@ -37,7 +37,7 @@
   \fancyfoot{}
   \renewcommand{\thepage}{} 
   \fancyhead{}
-  \setlength{\headheight}{190pt}
+  \setlength{\headheight}{165pt}
   \renewcommand{\headrulewidth}{1.2pt}
   \renewcommand{\headrule}{%
     {\color{highlight}\hrule height \headrulewidth width \headwidth}%
@@ -97,16 +97,21 @@
 \newsavebox{\tlbox}
 \newlength{\tlht}
 
-% \begin{timelineentry}[<line width>]{<x offset>}{<name>}
+% \begin{timelineentry}[<line width>]{<xoff>}{<yStart>}{<yEnd>}{<id>}
 %   ...content...
 % \end{timelineentry}
 %
-% <x offset> = how far LEFT of the content block the line is (e.g. 1.2em)
-% <name>     = unique id (e.g. train, postdoc1, phd2)
-\newenvironment{timelineentry}[3][2.5pt]{%
+% xoff   : how far LEFT of the content (e.g. 0.8em)
+% yStart : shift at top  (e.g. 2pt or -3pt)  (+ = up, - = down)
+% yEnd   : shift at bottom (e.g. -2pt or 4pt) (+ = up, - = down)
+% id     : unique name (train, postdoc, etc.)
+
+\newenvironment{timelineentry}[5][2.5pt]{%
   \def\tllw{#1}%
   \def\tlx{#2}%
-  \def\tlid{#3}%
+  \def\tlyA{#3}%
+  \def\tlyB{#4}%
+  \def\tlid{#5}%
   \begin{lrbox}{\tlbox}%
   \begin{minipage}{\linewidth}%
   \tikzmark{\tlid-top}%
@@ -116,7 +121,7 @@
   \end{lrbox}%
   \noindent\usebox{\tlbox}%
   \begin{tikzpicture}[remember picture,overlay]
-    \draw[sectioncolor,line width=\tllw]
-      ($(pic cs:\tlid-top)+(-\tlx,0)$) -- ($(pic cs:\tlid-bot)+(-\tlx,0)$);
+    \draw[subtextcolor,line width=\tllw]
+      ($(pic cs:\tlid-top)+(-\tlx,\tlyA)$) -- ($(pic cs:\tlid-bot)+(-\tlx,\tlyB)$);
   \end{tikzpicture}%
 }
