@@ -7,6 +7,9 @@
 \RequirePackage{graphicx}
 \RequirePackage[twoside]{fancyhdr}
 
+% include PDF
+\RequirePackage{pdfpages}
+
 % COLOR
 \RequirePackage{xcolor}
 \definecolor{namecolor}{RGB}{2, 25, 54}
@@ -48,7 +51,7 @@
   \fancyhead[R]
     {
       \fancyhdrbox[][11.5cm]{%
-      \begin{minipage}[c][\headheight][c]{10cm}
+      \begin{minipage}[c][\headheight][c]{12cm}
         \centering
         {\color{namecolor}\Huge\textbf\name\\}
         {\color{namecolor}\prefix\\}
