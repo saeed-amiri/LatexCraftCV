@@ -1,11 +1,29 @@
-% --- TikZ header box ---
 \RequirePackage{tikz}
-
+\RequirePackage{graphicx}
+\RequirePackage[colorlinks=true, urlcolor=blue]{hyperref}
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
-    \fill[blue!60] 
-      (current page.north west) rectangle 
+    % Background bar
+    \fill[blue!60]
+      (current page.north west) rectangle
       ([yshift=-4.5cm]current page.north east);
-  \end{tikzpicture}
-  \vspace*{2cm} % push the body text down
+
+    % Photo on the left
+    \node[anchor=north west, xshift=1.3cm, yshift=-0.5cm] 
+      at (current page.north west)
+      {\includegraphics[width=3.2cm]{\photo}};
+    
+      % Name + Role text
+    \node[anchor=west, xshift=5.2cm, yshift=-1.2cm, text=white]
+      at (current page.north west)
+      {\fontsize{24}{28}\selectfont \name};
+
+    \node[anchor=west, xshift=5.2cm, yshift=-3.7cm, text=white]
+      at (current page.north west)
+      {\fontsize{12}{14}\selectfont \role};
+
+
+    \end{tikzpicture}
+
+  \vspace*{2cm}
 }
