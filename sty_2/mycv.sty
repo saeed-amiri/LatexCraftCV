@@ -1,35 +1,54 @@
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
 \RequirePackage[colorlinks=true, urlcolor=blue]{hyperref}
+\RequirePackage{enumitem}
+
+\RequirePackage[sfdefault,light]{inter}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \RequirePackage[sfdefault,light,semibold]{inter}
+% \renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\lighttext}{\fontseries{l}\selectfont}
+\newcommand{\thintext}{\fontseries{ul}\selectfont} % ultra-light
+\newcommand{\orgname}[1]{\textcolor{myblack!60}{\footnotesize\lighttext #1}}
+\newcommand{\thinbullet}[1]{\textcolor{myblack!80}{\footnotesize #1}}
+
+% Colors
+\definecolor{namecolor}{RGB}{2, 25, 54}
+\definecolor{highlight}{RGB}{45, 53, 64}
+\definecolor{myblack}{RGB}{56, 64, 74}
+\definecolor{sectioncolor}{RGB}{133, 25, 11}
+\definecolor{subtextcolor}{RGB}{14, 2, 87}
+
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
     % Background bar
     \fill[blue!60]
-      (current page.north west) rectangle
-      ([yshift=-4.5cm]current page.north east);
-
+    (current page.north west) rectangle
+    ([yshift=-4.5cm]current page.north east);
+    
     % Photo on the left
     \node[anchor=north west, xshift=1.3cm, yshift=-0.5cm] 
-      at (current page.north west)
-      {\includegraphics[width=3.2cm]{\photo}};
+    at (current page.north west)
+    {\includegraphics[width=3.2cm]{\photo}};
     
-      % Name + Role text
+    % Name + Role text
     \node[anchor=west, xshift=5.2cm, yshift=-1.2cm, text=white]
-      at (current page.north west)
-      {\fontsize{24}{28}\selectfont \name};
-
+    at (current page.north west)
+    {\fontsize{24}{28}\selectfont \name};
+    
     \node[anchor=west, xshift=5.2cm, yshift=-3.7cm, text=white]
-      at (current page.north west)
-      {\fontsize{12}{14}\selectfont \role};
-
-
-    \end{tikzpicture}
-
+    at (current page.north west)
+    {\fontsize{12}{14}\selectfont \role};
+    
+    
+  \end{tikzpicture}
+  
   \vspace*{2cm}
 }
-
+  
 % --- Contact info block (ATS-friendly, one line) ---
-% --- Contact info block (ATS-friendly, elegant one-line) ---
 \newcommand{\cvcontactinfo}[5]{
   \vspace{0.9cm}
   \noindent\small\bfseries
@@ -40,4 +59,24 @@
   #5
   \par\normalsize
   \vspace{0.9cm}
+}
+  
+% SECTION FORMATTING 
+\RequirePackage[nostruts]{titlesec}
+\titlespacing*{\section}{0em}{-0.1em}{0em}
+\titleformat{\section}{\color{sectioncolor} \scshape \raggedright \large}{}{0em}{}[\vspace{-0.5em}\hrulefill]
+
+\setlength{\parindent}{0pt}
+% --- Experience Entry ---
+\newcommand{\cvexperience}[4]{%
+  \vspace{0.55em}%
+  {\normalsize\bfseries #1} \hfill {\footnotesize #2}\\%
+  {\orgname{#3}}\
+  \vspace{-0.3em}%
+  \begin{itemize}[leftmargin=1cm, itemsep=0.0em, topsep=1.2em]
+    \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+    {\footnotesize\lighttext\color{myblack!95} #4}
+  \end{itemize}
+
+  \vspace{-0.2em}\par\noindent
 }
