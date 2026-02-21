@@ -1,14 +1,18 @@
+
 \documentclass{mycv}
 \usepackage{mycv}
 
 \input{_credential}
 
 \begin{document}
+\pagenumbering{gobble}
 
-\thispagestyle{firstpage}
-
-\input{sections/objective}
-
-
+\cvheader    
+% \input{sections/objective}
+\cvcontactinfo{\phone}{\email}{\github}{\LinkedIn}{\location}
+\input{sections/objective.tex}
+\input{sections/weiterbildung.tex}
+\input{sections/educations.tex}
+\input{sections/experinces}
 
 \end{document}
