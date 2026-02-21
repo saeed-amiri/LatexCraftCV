@@ -1,7 +1,8 @@
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
-\RequirePackage[colorlinks=true, urlcolor=blue]{hyperref}
 \RequirePackage{enumitem}
+\RequirePackage{tabularx}
+\RequirePackage[colorlinks=true, urlcolor=blue]{hyperref}
 
 \RequirePackage[sfdefault,light]{inter}
 \renewcommand{\familydefault}{\sfdefault}
@@ -65,18 +66,36 @@
 \RequirePackage[nostruts]{titlesec}
 \titlespacing*{\section}{0em}{-0.1em}{0em}
 \titleformat{\section}{\color{sectioncolor} \scshape \raggedright \large}{}{0em}{}[\vspace{-0.5em}\hrulefill]
-
 \setlength{\parindent}{0pt}
-% --- Experience Entry ---
-\newcommand{\cvexperience}[4]{%
-  \vspace{0.55em}%
-  {\normalsize\bfseries #1} \hfill {\footnotesize #2}\\%
-  {\orgname{#3}}\
-  \vspace{-0.3em}%
-  \begin{itemize}[leftmargin=1cm, itemsep=0.0em, topsep=1.2em]
-    \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-    {\footnotesize\lighttext\color{myblack!95} #4}
-  \end{itemize}
 
-  \vspace{-0.2em}\par\noindent
+% % The items for the cv
+\newcommand{\cvexperince}[4]{%
+  % --- Header (#1) ---
+  \vspace{0.9em}
+  {\noindent\large\bfseries #1}
+
+  % --- Two-column layout (1:3 ratio) ---
+  \begin{tabularx}{\linewidth}{@{}>{\hsize=.25\hsize}X >{\hsize=.75\hsize}X@{}}
+    % Left column: #2 and #3
+    \begin{minipage}[t]{\linewidth}
+      {\footnotesize\bfseries #2}\
+
+  \vspace{0.2em}
+      {\orgname{#3}}
+    \end{minipage}
+    &
+    % Right column: bullet list (#4)
+    \begin{minipage}[t]{\linewidth}
+      \if\relax\detokenize{#4}\relax
+      \else
+        \vspace{-0.2em}
+        \begin{itemize}[leftmargin=0.6cm, itemsep=0.2em, topsep=0.8em]
+          \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+          {\footnotesize\lighttext\color{myblack!95} #4}
+        \end{itemize}
+      \fi
+    \end{minipage}
+  \end{tabularx}
+
+  \vspace{-0.0em}\par\noindent
 }
