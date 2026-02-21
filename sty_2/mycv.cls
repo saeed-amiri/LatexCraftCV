@@ -3,14 +3,13 @@
 \LoadClass[10pt,a4paper]{article}
 
 \RequirePackage[
-  top=0.5cm,
-  bottom=2cm,
-  right=1.3cm,
-  left=1.3cm,
+  top=0.2cm,  % ← distance from the top, for the text (all of them)
+  bottom=0.1cm,
+  right=1.5cm,
+  left=1.5cm,
   includehead,includefoot,
   heightrounded
 ]{geometry}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-

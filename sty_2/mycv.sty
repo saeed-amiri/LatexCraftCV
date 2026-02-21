@@ -2,18 +2,12 @@
 \RequirePackage{graphicx}
 \RequirePackage{enumitem}
 \RequirePackage{tabularx}
-\RequirePackage[colorlinks=true, urlcolor=blue]{hyperref}
+\RequirePackage[colorlinks=true, urlcolor=gray]{hyperref}
 
 \RequirePackage[sfdefault,light]{inter}
 \renewcommand{\familydefault}{\sfdefault}
-
 % \RequirePackage[sfdefault,light,semibold]{inter}
 % \renewcommand{\familydefault}{\sfdefault}
-
-\newcommand{\lighttext}{\fontseries{l}\selectfont}
-\newcommand{\thintext}{\fontseries{ul}\selectfont} % ultra-light
-\newcommand{\orgname}[1]{\textcolor{myblack!60}{\footnotesize\lighttext #1}}
-\newcommand{\thinbullet}[1]{\textcolor{myblack!80}{\footnotesize #1}}
 
 % Colors
 \definecolor{namecolor}{RGB}{2, 25, 54}
@@ -21,11 +15,22 @@
 \definecolor{myblack}{RGB}{56, 64, 74}
 \definecolor{sectioncolor}{RGB}{133, 25, 11}
 \definecolor{subtextcolor}{RGB}{14, 2, 87}
+\definecolor{mybg1}{HTML}{243447}   % Midnight Blue
+\definecolor{mybg2}{HTML}{1C2E4A}   % Dark Slate Blue
+\definecolor{mybg3}{HTML}{0A1A2F}   % Deep Navy Blue
+\definecolor{mybg4}{HTML}{2A3B4D}   % Deep Blue‑Gray
+
+
+\newcommand{\lighttext}{\fontseries{l}\selectfont}
+\newcommand{\thintext}{\fontseries{ul}\selectfont} % ultra-light
+\newcommand{\orgname}[1]{\textcolor{black!60}{\fontsize{7}{8}\selectfont\lighttext #1}}
+\newcommand{\thinbullet}[1]{\textcolor{black!80}{\footnotesize #1}}
+
 
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
     % Background bar
-    \fill[blue!60]
+    \fill[mybg1]
     (current page.north west) rectangle
     ([yshift=-4.5cm]current page.north east);
     
@@ -37,7 +42,7 @@
     % Name + Role text
     \node[anchor=west, xshift=5.2cm, yshift=-1.2cm, text=white]
     at (current page.north west)
-    {\fontsize{24}{28}\selectfont \name};
+    {\scshape \raggedright \fontsize{24}{28}\selectfont \name};
     
     \node[anchor=west, xshift=5.2cm, yshift=-3.7cm, text=white]
     at (current page.north west)
@@ -65,20 +70,20 @@
 % SECTION FORMATTING 
 \RequirePackage[nostruts]{titlesec}
 \titlespacing*{\section}{0em}{-0.1em}{0em}
-\titleformat{\section}{\color{sectioncolor} \scshape \raggedright \large}{}{0em}{}[\vspace{-0.5em}\hrulefill]
+\titleformat{\section}{\color{mybg3} \scshape \raggedright \fontsize{10}{12}\selectfont}{}{0em}{}[\vspace{-0.5em}\hrulefill\vspace{0.5em}]
 \setlength{\parindent}{0pt}
 
 % % The items for the cv
 \newcommand{\cvexperince}[4]{%
   % --- Header (#1) ---
-  \vspace{0.9em}
-  {\noindent\large\bfseries #1}
+  \vspace{0.2em}
+  {\noindent\fontsize{8}{9}\selectfont\bfseries #1}
 
   % --- Two-column layout (1:3 ratio) ---
-  \begin{tabularx}{\linewidth}{@{}>{\hsize=.25\hsize}X >{\hsize=.75\hsize}X@{}}
+  \begin{tabularx}{\linewidth}{@{}>{\hsize=.27\hsize}X >{\hsize=.73\hsize}X@{}}
     % Left column: #2 and #3
     \begin{minipage}[t]{\linewidth}
-      {\footnotesize\bfseries #2}\
+      {\fontsize{7}{8}\selectfont\bfseries #2}\
 
   \vspace{0.2em}
       {\orgname{#3}}
@@ -89,13 +94,13 @@
       \if\relax\detokenize{#4}\relax
       \else
         \vspace{-0.2em}
-        \begin{itemize}[leftmargin=0.6cm, itemsep=0.2em, topsep=0.8em]
+        \begin{itemize}[leftmargin=0.6cm, itemsep=0.0em, topsep=0.8em]
           \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-          {\footnotesize\lighttext\color{myblack!95} #4}
+          {\fontsize{7.7}{9}\selectfont\lighttext\color{black!95} #4}
         \end{itemize}
       \fi
     \end{minipage}
   \end{tabularx}
 
-  \vspace{-0.0em}\par\noindent
+  \vspace{-0.4em}\par\noindent
 }
