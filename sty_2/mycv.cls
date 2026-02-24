@@ -4,7 +4,7 @@
 
 \RequirePackage[
   top=0.2cm,  % ← distance from the top, for the text (all of them)
-  bottom=0.1cm,
+  bottom=0.0cm,
   right=1.5cm,
   left=1.5cm,
   includehead,includefoot,

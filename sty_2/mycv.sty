@@ -3,8 +3,10 @@
 \RequirePackage{enumitem}
 \RequirePackage{tabularx}
 \RequirePackage[colorlinks=true, urlcolor=gray]{hyperref}
-
+\RequirePackage{xcolor}
+\RequirePackage{pagecolor}
 \RequirePackage[sfdefault,light]{inter}
+% \RequirePackage{fontawesome5}
 \renewcommand{\familydefault}{\sfdefault}
 % \RequirePackage[sfdefault,light,semibold]{inter}
 % \renewcommand{\familydefault}{\sfdefault}
@@ -19,7 +21,11 @@
 \definecolor{mybg2}{HTML}{1C2E4A}   % Dark Slate Blue
 \definecolor{mybg3}{HTML}{0A1A2F}   % Deep Navy Blue
 \definecolor{mybg4}{HTML}{2A3B4D}   % Deep Blue‑Gray
-
+\definecolor{mybg5}{HTML}{F5F5F5}   % Color for background
+\definecolor{mybg6}{HTML}{F2E8D5}   % Color of the msg
+\definecolor{mybg7}{HTML}{E6E6E6}   % Color of the side
+\definecolor{mybg8}{HTML}{1A1A1A}   % Dark gray but not black, or 222222
+\definecolor{headerbg}{HTML}{FAFAFA}
 
 \newcommand{\lighttext}{\fontseries{l}\selectfont}
 \newcommand{\thintext}{\fontseries{ul}\selectfont} % ultra-light
@@ -56,16 +62,26 @@
   
 % --- Contact info block (ATS-friendly, one line) ---
 \newcommand{\cvcontactinfo}[5]{
-  \vspace{0.9cm}
-  \noindent\small\bfseries
-  #1 \hspace{1em}·\hspace{1em}
-  #2 \hspace{1em}·\hspace{1em}
-  #3 \hspace{1em}·\hspace{1em}
-  #4 \hspace{1em}·\hspace{1em}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[mybg7]
+    (current page.north west) ++(0,-5.3cm)
+    rectangle
+    ++(\paperwidth,0.8cm);
+\end{tikzpicture}
+
+
+  \vspace{0.3cm}
+  \noindent\color{mybg8}\small\bfseries
+  #1 \hspace{1.97em}·\hspace{1.97em}
+  #2 \hspace{1.97em}·\hspace{1.97em}
+  #3 \hspace{1.97em}·\hspace{1.97em}
+  #4 \hspace{1.97em}·\hspace{1.97em}
   #5
   \par\normalsize
-  \vspace{0.9cm}
+  \vspace{0.7cm}
 }
+
+
   
 % SECTION FORMATTING 
 \RequirePackage[nostruts]{titlesec}
@@ -109,3 +125,51 @@
 
   \vspace{-0.4em}\par\noindent
 }
+
+\newcommand{\skillstable}[1]{%
+  \begin{tabularx}{\textwidth}{@{} p{5cm} X @{}}
+  #1
+  \end{tabularx}
+}
+
+\newcommand{\skillrow}[2]{%
+  \fontsize{7.7}{9}\selectfont \textbf{#1} & \fontsize{7.7}{9}\selectfont {#2} \\[0.6em]
+}
+
+
+\newcommand{\publication}[3]{%
+  \noindent \textbf{\fontsize{7.7}{9}{$\bullet$\selectfont { #1}}}\
+
+\vspace{-0.2em}
+  {\small \fontsize{7.7}{9}\selectfont{#2}}\
+
+\vspace{-0.2em}
+  {\small\textit{\fontsize{7.7}{9}\selectfont #3}}%
+  \vspace{0.6em}
+}
+
+\newcommand{\publicationssection}[1]{%
+  \vspace{0.5em}
+  #1
+  \vspace{0.5em}
+}
+
+\newcommand{\refrences}[5]{%
+  \noindent \textbf{\fontsize{7.7}{9}{$\bullet$\selectfont { #1}}}\
+
+  \vspace{-0.2em}
+  {\small \fontsize{7.7}{9}\selectfont{#2}}\
+
+  \vspace{-0.2em}
+  {\small\textit{\fontsize{7.7}{9}\selectfont #3}}%
+
+  \vspace{-0.2em}
+  {\small\textit{\fontsize{7.7}{9}\selectfont #4}}%
+
+  \vspace{-0.2em}
+  {\small\textit{\fontsize{7.7}{9}\selectfont #5}}%
+  \vspace{0.6em}
+
+}
+
+
