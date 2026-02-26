@@ -5,10 +5,13 @@
 \RequirePackage[colorlinks=true, urlcolor=gray]{hyperref}
 \RequirePackage{xcolor}
 \RequirePackage{pagecolor}
-\RequirePackage[sfdefault,light]{inter}
-% \RequirePackage{fontawesome5}
-\renewcommand{\familydefault}{\sfdefault}
+% \RequirePackage[sfdefault,light]{inter}
+% \renewcommand{\familydefault}{\sfdefault}
 % \RequirePackage[sfdefault,light,semibold]{inter}
+% \renewcommand{\familydefault}{\sfdefault}
+% \RequirePackage{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+% \RequirePackage{tgheros} % TeX Gyre Heros
 % \renewcommand{\familydefault}{\sfdefault}
 
 % Colors
@@ -149,3 +152,6 @@
 }
 
 
+\newcommand{\letter}[1]{
+  {\fontsize{10.2}{12.4}\selectfont #1}
+}
