@@ -35,62 +35,49 @@
 
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
+
     % Background bar
     \fill[mybg1]
-    (current page.north west) rectangle
-    ([yshift=-4.5cm]current page.north east);
-    
-    % Photo on the left
-    \node[anchor=north west, xshift=1.3cm, yshift=-0.5cm] 
-    at (current page.north west)
-    {\includegraphics[width=3.2cm]{\photo}};
-    
-    % Name + Role text
-    \node[anchor=west, xshift=5.2cm, yshift=-1.2cm, text=white]
-    at (current page.north west)
-    {\scshape \raggedright \fontsize{24}{28}\selectfont \name};
-    
-    \node[anchor=west, xshift=5.2cm, yshift=-3.7cm, text=white]
-    at (current page.north west)
-    {\fontsize{12}{14}\selectfont \role};
-    
-    
+      (current page.north west) rectangle
+      ([yshift=-4.0cm]current page.north east);
+
+    % === NAME (top line) ===
+    \node[anchor=west, xshift=1.2cm, yshift=-1.2cm, text=white]
+      at (current page.north west)
+      {\raggedright \fontsize{18}{20}\selectfont \title_name};
+
+    % === CONTACT INFO (second line, smaller, directly under name) ===
+    \node[anchor=west, xshift=1.2cm, yshift=-2.0cm, text=white]
+      at (current page.north west)
+      {\raggedright \fontsize{9}{11}\selectfont \location};
+
+    \node[anchor=west, xshift=1.2cm, yshift=-2.4cm, text=white]
+      at (current page.north west)
+      {\raggedright \fontsize{9}{11}\selectfont \phone};
+
+        \node[anchor=west, xshift=1.2cm, yshift=-2.8cm, text=white]
+      at (current page.north west)
+      {\raggedright \fontsize{9}{11}\selectfont \email};
+
+    % === LOCATION + DATE (right side, same height as name) ===
+    \node[anchor=east, xshift=-1.2cm, yshift=-1.2cm, text=white]
+      at (current page.north east)
+      {\fontsize{9}{10.8}\selectfont \city, \dated};
+
   \end{tikzpicture}
-  
-  \vspace*{2cm}
+
+  \vspace*{2.8cm}
 }
-  
-% --- Contact info block (ATS-friendly, one line) ---
-\newcommand{\cvcontactinfo}[5]{
-\begin{tikzpicture}[remember picture,overlay]
-  \fill[mybg7]
-    (current page.north west) ++(0,-5.3cm)
-    rectangle
-    ++(\paperwidth,0.8cm);
-\end{tikzpicture}
-
-
-  \vspace{0.3cm}
-  \noindent\color{mybg8}\small\bfseries
-  #1 \hspace{1.97em}·\hspace{1.97em}
-  #2 \hspace{1.97em}·\hspace{1.97em}
-  #3 \hspace{1.97em}·\hspace{1.97em}
-  #4 \hspace{1.97em}·\hspace{1.97em}
-  #5
-  \par\normalsize
-  \vspace{0.9cm}
-}
-
 
   
 % SECTION FORMATTING 
 \RequirePackage[nostruts]{titlesec}
-\titlespacing*{\section}{0em}{-0.1em}{0em}
+\titlespacing*{\section}{0em}{1.5em}{0em}
 \titleformat{\section}
-  {\color{mybg3}\scshape\raggedright\bfseries\fontsize{10}{12}\selectfont}
+  {\color{mybg3}\raggedright\bfseries\fontsize{12}{14,4}\selectfont}
   {}{0em}
   {}
-  [\vspace{-0.5em}\rule{\linewidth}{1pt}\vspace{0.5em}]
+  [\vspace{0.1em}\rule{\linewidth}{1pt}\vspace{0.5em}]
 \setlength{\parindent}{0pt}
   
 
@@ -104,7 +91,7 @@
   \begin{tabularx}{\linewidth}{@{}>{\hsize=.27\hsize}X >{\hsize=.73\hsize}X@{}}
     % Left column: #2 and #3
     \begin{minipage}[t]{\linewidth}
-      {\fontsize{7}{8}\selectfont\bfseries #2}\
+      {\fontsize{9}{11}\selectfont\bfseries #2}\
 
   \vspace{0.2em}
       {\orgname{#3}}
@@ -125,17 +112,6 @@
 
   \vspace{-0.4em}\par\noindent
 }
-
-\newcommand{\skillstable}[1]{%
-  \begin{tabularx}{\textwidth}{@{} p{5cm} X @{}}
-  #1
-  \end{tabularx}
-}
-
-\newcommand{\skillrow}[2]{%
-  \fontsize{7.7}{9}\selectfont \textbf{#1} & \fontsize{7.7}{9}\selectfont {#2} \\[0.6em]
-}
-
 
 \newcommand{\publication}[3]{%
   \noindent \textbf{\fontsize{7.7}{9}{$\bullet$\selectfont { #1}}}\
