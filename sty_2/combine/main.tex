@@ -1,10 +1,25 @@
-\documentclass{article}
-\usepackage{pdfpages}
+\documentclass{../cv/mycv}
+\usepackage{../cv/mycv}
+\usepackage{docmute}  % Ignores \documentclass, \usepackage, \begin{document} in input files
+\usepackage{import}   % Handles relative paths for images/inputs inside sub-files
+\usepackage{pdfpages} % Still needed for the external diploma/phd PDFs
+
+% Load credentials (needed for the sub-files)
+\input{../_credential}
 
 \begin{document}
-\input{../cl/main.tex}
-\input{../cv/main.tex}
-\includepdf[pages=-]{../phd.pdf}
-\includepdf[pages=-]{../Saeed_AMIRI_diploma.pdf}
+
+% --- 1. Cover Letter ---
+% \subimport sets the directory context so inputs like 'letter.tex' work
+\subimport{../cl/}{main.tex}
+
+% --- 2. CV ---
+\subimport{../cv/}{main.tex}
+
+% --- 3. External PDFs ---
+% For external PDFs, 'fitpaper=true' adjusts the page size to match the PDF,
+% removing added margins. Links here will still be dead (unavoidable for PDFs).
+\includepdf[pages=-, fitpaper=true]{../phd.pdf}
+\includepdf[pages=-, fitpaper=true]{../Saeed_AMIRI_diploma.pdf}
 
 \end{document}
