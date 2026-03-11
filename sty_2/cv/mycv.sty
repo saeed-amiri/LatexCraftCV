@@ -25,6 +25,7 @@
 \definecolor{mybg6}{HTML}{F2E8D5}   % Color of the msg
 \definecolor{mybg7}{HTML}{E6E6E6}   % Color of the side
 \definecolor{mybg8}{HTML}{1A1A1A}   % Dark gray but not black, or 222222
+\definecolor{mybg9}{HTML}{0000CD}   % Dark blue
 \definecolor{headerbg}{HTML}{FAFAFA}
 
 \newcommand{\lighttext}{\fontseries{l}\selectfont}
@@ -36,7 +37,7 @@
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
     % Background bar
-    \fill[mybg1]
+    \fill[mybg3]
     (current page.north west) rectangle
     ([yshift=-4.5cm]current page.north east);
     
