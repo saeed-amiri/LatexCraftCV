@@ -37,7 +37,7 @@
 \newcommand{\cvheader}{
   \begin{tikzpicture}[remember picture,overlay]
     % Background bar
-    \fill[mybg3]
+    \fill[mybg1]
     (current page.north west) rectangle
     ([yshift=-4.5cm]current page.north east);
     
@@ -174,15 +174,12 @@
 }
 
 
-\newcommand{\competency}[3]{%
+\newcommand{\competency}[2]{%
   \noindent {\textbf{{\fontsize{7.7}{9}{\selectfont{ #1}}}}}%
-  \vspace{-0.2em}
-  \begin{itemize}
-    {\fontsize{7.7}{9}\selectfont{\item #2}}\vspace{-0.8em}%
-    {\fontsize{7.7}{9}\selectfont{\item #3}}\vspace{-0.2em}%
-  \end{itemize}
+  \vspace{0.5em}
+  {\fontsize{7.7}{9}\selectfont{ #2}}%
 
-  \vspace{0.6em}
+  \vspace{0.1em}
 }
 
 \newcommand{\competenciesssection}[1]{%
